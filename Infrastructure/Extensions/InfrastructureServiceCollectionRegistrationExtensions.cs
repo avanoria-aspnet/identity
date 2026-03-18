@@ -1,4 +1,5 @@
-﻿using Infrastructure.Extensions.Persistence;
+﻿using Infrastructure.Extensions.Identity;
+using Infrastructure.Extensions.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,6 +15,7 @@ public static class InfrastructureServiceCollectionRegistrationExtensions
         ArgumentNullException.ThrowIfNull(environment);
 
         services.AddPersistence(configuration, environment);
+        services.AddIdentityServices();
         services.AddRepositories();
 
         return services;
