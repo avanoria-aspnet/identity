@@ -37,6 +37,12 @@ public sealed record RegisterResult
             error ?? "A user with the same email already exists."
         ]);
 
+    public static RegisterResult NotFound(string? error = null) =>
+    new(RegisterStatus.NotFound, errors:
+    [
+        error ?? "A user not found."
+    ]);
+
     public static RegisterResult InvalidInput(IEnumerable<string> errors) =>
         new(RegisterStatus.InvalidInput, errors: [.. errors]);
 

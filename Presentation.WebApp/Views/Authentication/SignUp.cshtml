@@ -18,10 +18,17 @@
         
         <div class="form-group">
             <label class="form-label" asp-for="Email"></label>
-            <input class="form-input" type="email" asp-for="Email" />
+            <input class="form-input" asp-for="Email" />
             <span class="form-validation" asp-validation-for="Email"></span>
         </div>
 
         <button class="form-button" type="submit">Continue</button>
+
+        @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="form-error-message">
+                @ViewData["ErrorMessage"]?.ToString()
+            </div>
+        }
     </form>
 </section>

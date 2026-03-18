@@ -7,5 +7,6 @@ public enum RegisterStatus
     CreatedWithoutPassword,
     InvalidInput,
     UserAlreadyExists,
-    Failed
+    Failed,
+    NotFound
 }

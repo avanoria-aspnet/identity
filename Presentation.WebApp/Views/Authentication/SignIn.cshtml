@@ -1,0 +1,38 @@
+﻿@model SignInForm
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = "Layouts/_AuthLayout";
+}
+
+<section class="auth-form-section">
+    <div class="headline">
+        <h1>Welcome</h1>
+        <p>
+            Log in to continue your fitness journey with full access to your customized program, training history, and progress tracking. Stay consistent, monitor your development, and keep moving forward with the structure and support built into your account.
+        </p>
+    </div>
+
+    <hr />
+
+    <form method="post" asp-action="SignIn" asp-controller="Authentication" novalidate>
+        
+        <div class="form-group">
+            <label class="form-label" asp-for="Email"></label>
+            <input class="form-input" asp-for="Email" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" asp-for="Password"></label>
+            <input class="form-input" asp-for="Password" value="@Model?.Password" autocomplete="off" />
+            <span class="form-validation" asp-validation-for="Password" ></span>
+        </div>
+
+        <button class="form-button" type="submit">Continue</button>
+
+        @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+        {
+            <div class="form-error-message">
+                @ViewData["ErrorMessage"]?.ToString()
+            </div>
+        }
+    </form>
+</section>

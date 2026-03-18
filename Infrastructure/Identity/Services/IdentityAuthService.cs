@@ -8,6 +8,8 @@ namespace Infrastructure.Identity.Services;
 
 public sealed class IdentityAuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager) : IUserAuthService
 {
+    
+
     public async Task<RegisterResult> RegisterLocalUserAsync(RegisterCredentials credentials, CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(credentials);
@@ -83,4 +85,13 @@ public sealed class IdentityAuthService(UserManager<ApplicationUser> userManager
 
     public Task LogoutUserAsync(CancellationToken ct = default) =>
         signInManager.SignOutAsync();
+
+    public async Task<RegisterResult> CheckEmailExistsAsync(string email, CancellationToken ct = default)
+    {
+        var existingUser = await userManager.FindByEmailAsync(email);
+        if (existingUser is not null)
+            return RegisterResult.UserAlreadyExists();
+
+        return RegisterResult.NotFound();
+    }
 }

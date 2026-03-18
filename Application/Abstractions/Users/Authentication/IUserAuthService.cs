@@ -5,6 +5,7 @@ namespace Application.Abstractions.Users.Authentication;
 
 public interface IUserAuthService
 {
+    Task<RegisterResult> CheckEmailExistsAsync(string email, CancellationToken ct = default);
     Task<RegisterResult> RegisterLocalUserAsync(RegisterCredentials credentials, CancellationToken ct = default);
     Task<LoginResult> LoginLocalUserAsync(LoginCredentials credentials, CancellationToken ct = default);
     Task LogoutUserAsync(CancellationToken ct = default);
