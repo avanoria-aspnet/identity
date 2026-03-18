@@ -17,6 +17,8 @@ await PersistenceInitializer.InitializeAsync(app.Services, app.Environment);
 
 app.UseHsts();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseSession();
