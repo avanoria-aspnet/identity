@@ -1,0 +1,28 @@
+﻿.header-section {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+
+    @media (width >= 1200px) {
+        grid-template-columns: 2fr 3fr 2fr;
+    }
+
+    .logotype {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .main-menu {
+        display: none;
+        justify-content: center;
+
+        @media (width >= 1200px) {
+            display: flex;
+        }
+    }
+
+    .account-menu {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
