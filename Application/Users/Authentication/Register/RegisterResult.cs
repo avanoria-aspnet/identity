@@ -38,7 +38,7 @@ public sealed record RegisterResult
         ]);
 
     public static RegisterResult InvalidInput(IEnumerable<string> errors) =>
-        new(RegisterStatus.InvalidInput, errors: errors.ToArray());
+        new(RegisterStatus.InvalidInput, errors: [.. errors]);
 
     public static RegisterResult Failed(string? error = null) =>
         new(RegisterStatus.Failed, errors:

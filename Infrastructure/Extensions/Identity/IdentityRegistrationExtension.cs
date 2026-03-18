@@ -1,4 +1,4 @@
-﻿using Application.Abstractions.Users;
+﻿using Application.Abstractions.Users.Authentication;
 using Infrastructure.Identity;
 using Infrastructure.Identity.Services;
 using Infrastructure.Persistence.Contexts;
@@ -16,6 +16,11 @@ public static class IdentityRegistrationExtension
             options.User.RequireUniqueEmail = true;
 
             options.Password.RequiredLength = 8;
+
+            options.SignIn.RequireConfirmedAccount = false;
+            options.SignIn.RequireConfirmedPhoneNumber = false;
+            options.SignIn.RequireConfirmedEmail = false;
+
         })
         .AddEntityFrameworkStores<PersistenceContext>()
         .AddDefaultTokenProviders();

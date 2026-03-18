@@ -1,4 +1,4 @@
-﻿using Application.Abstractions.Users;
+﻿using Application.Abstractions.Users.Authentication;
 using Application.Users.Authentication.Login;
 using Application.Users.Authentication.Register;
 using Microsoft.AspNetCore.Identity;
@@ -64,7 +64,7 @@ public sealed class IdentityAuthService(UserManager<ApplicationUser> userManager
         if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(credentials.Password))
             return LoginResult.InvalidCredentials("Email and password are required.");
 
-        var signInResult = await signInManager.PasswordSignInAsync(email,credentials.Password, credentials.RememberMe, lockoutOnFailure: true);
+        var signInResult = await signInManager.PasswordSignInAsync(email,credentials.Password, credentials.RememberMe, lockoutOnFailure: false);
 
         if (signInResult.Succeeded)
             return LoginResult.Success();

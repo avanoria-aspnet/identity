@@ -1,7 +1,7 @@
 ﻿using Application.Users.Authentication.Login;
 using Application.Users.Authentication.Register;
 
-namespace Application.Abstractions.Users;
+namespace Application.Abstractions.Users.Authentication;
 
 public interface IUserAuthService
 {
