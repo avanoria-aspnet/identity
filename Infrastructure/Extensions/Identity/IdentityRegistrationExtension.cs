@@ -1,4 +1,6 @@
-﻿using Infrastructure.Identity;
+﻿using Application.Abstractions.Users;
+using Infrastructure.Identity;
+using Infrastructure.Identity.Services;
 using Infrastructure.Persistence.Contexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,8 @@ public static class IdentityRegistrationExtension
         })
         .AddEntityFrameworkStores<PersistenceContext>()
         .AddDefaultTokenProviders();
+
+        services.AddScoped<IUserAuthService, IdentityAuthService>();
 
         return services;
     }
